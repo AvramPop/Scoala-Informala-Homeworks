@@ -1,0 +1,15 @@
+// calculate the sum of the first 100 numbers higher than 0
+
+algorithm Sum is:
+  s = 100 * 101 / 2
+  write s
+end_algorithm
+
+//alternative using for loop
+algorithm Sum is:
+  s = 0
+  for i = 1, 100
+    s += i
+  endfor
+  print s
+end_algorithm

@@ -1,0 +1,16 @@
+//check if a number is palindrome
+
+algorithm IsPalindrome is:
+  read n
+  cn = n
+  nrNou = 0
+  while n > 0
+    nrNou = nrNou * 10 + n % 10
+    n = n / 10
+  endwhile
+  if nrNou == cn
+    write cn, "is palindrome"
+  else
+    write cn, "is not palindrome"
+  endif
+end_algorithm

@@ -1,0 +1,21 @@
+// display all the prime numbers below a given number
+
+algorithm Primes is:
+  read n
+  if n < 2
+    write "There's no prime number below ", n
+  else
+    write "2, "
+    for i = 3, i < n, i += 2 // iterate with i + 2 because there's no prime even number, another than 2
+    ok = 1
+      for j = 3, j < i / 2 && ok == 1, j += 2 // check if the number is divisible with an odd number below it's half, otherwise it is prime
+        if i % j == 0
+          ok = 0 // escape the inner "for" if the number is not prime
+        endif
+      enfor
+      if ok == 1
+        write i, ", "
+      endif
+    endfor
+  endif
+end_algorithm

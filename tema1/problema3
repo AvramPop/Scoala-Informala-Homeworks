@@ -1,0 +1,12 @@
+//display the max digit of a number. Read the number from keyboard
+
+algorithm MaximumDigit is:
+  read n, c = -1
+  while n > 0
+    if n % 10 > c
+      c = n % 10
+    endif
+    n = n / 10
+  endwhile
+  write c
+end_algorithm
