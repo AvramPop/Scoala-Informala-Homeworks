@@ -85,12 +85,12 @@ public class StringUtilityTest {
 
     @Test
     public void stringWithAllWordsDigitsAsWordsHasThemChanged(){
-        // given
+        
         String string = new String("Five six SEVEN eiGHt !!");
         StringUtility stringUtility = new StringUtility();
-        // when
+
         String correctedString = stringUtility.convertNumbersInLiteralsFromStringToDigits(string);
-        // then
+
         String correctlyFormattedArray = new String("5 6 7 8 !!");
         Assert.assertEquals(correctedString, correctlyFormattedArray);
     }
