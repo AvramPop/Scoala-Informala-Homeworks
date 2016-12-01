@@ -31,6 +31,18 @@ public class StringUtilityTest {
         Assert.assertEquals(correctedString, correctlyFormattedArray);
     }
 
+    @Test
+    public void stringComposedByASingleWhitespaceHasItRemoved(){
+        // given
+        String string = new String(" ");
+        StringUtility stringUtility = new StringUtility();
+        // when
+        String correctedString = stringUtility.removeWhitespaces(string);
+        // then
+        String correctlyFormattedArray = new String("");
+        Assert.assertEquals(correctedString, correctlyFormattedArray);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void removeWhitespaces_whenEmptyStringUsed_ExceptionIsThrown(){
         String string = new String("");
@@ -85,7 +97,7 @@ public class StringUtilityTest {
 
     @Test
     public void stringWithAllWordsDigitsAsWordsHasThemChanged(){
-        
+
         String string = new String("Five six SEVEN eiGHt !!");
         StringUtility stringUtility = new StringUtility();
 

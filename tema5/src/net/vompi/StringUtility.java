@@ -1,9 +1,7 @@
 package net.vompi;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by dani on 11/30/16.
@@ -26,29 +24,50 @@ public class StringUtility {
 
     }
 
-    public String removeWhitespaces(String string){
-        return string.replaceAll("\\s+","");
+    /**
+     * This method receives a string and removes every whitespace from it.
+     *
+     * @param stringToFormat the string to be formatted
+     * @return the received string without whitespaces
+     * @throws IllegalArgumentException if stringToFormat is null or empty
+     */
+    public String removeWhitespaces(String stringToFormat) throws IllegalArgumentException{
+        if (stringToFormat == null) {
+            throw new IllegalArgumentException("String must not be null.");
+        }
+        if (stringToFormat.length() == 0) {
+            throw new IllegalArgumentException("String must not be empty.");
+        }
+        return stringToFormat.replaceAll("\\s+","");
     }
 
-    public String convertNumbersInLiteralsFromStringToDigits(String stringToChange){
-        String[] wordsArray = stringToChange.split(" ");
-        StringBuilder sb = new StringBuilder();
+    /**
+     * This method receives a string and finds all occurrences of a digit written as
+     * a word(eg. "one" instead of "1"), changing them with the corresponding digit.
+     *
+     * @param stringToFormat the string to be formatted
+     * @return the received string with digits instead of the words representing them
+     * @throws IllegalArgumentException if stringToFormat is null or empty
+     */
 
-        for ( String ss : wordsArray) {
+    public String convertNumbersInLiteralsFromStringToDigits(String stringToFormat) throws IllegalArgumentException{
+        if (stringToFormat == null) {
+            throw new IllegalArgumentException("String must not be null.");
+        }
+        if (stringToFormat.length() == 0) {
+            throw new IllegalArgumentException("String must not be empty.");
+        }
+        String[] wordsArray = stringToFormat.split(" ");
+        StringBuilder stringBuilder = new StringBuilder();
 
-            //System.out.println(ss);
-            if(digitsMap.containsKey(ss.toLowerCase())) {
-                ss = digitsMap.get(ss.toLowerCase());
+        for ( String substring : wordsArray) {
+            if(digitsMap.containsKey(substring.toLowerCase())) {
+                substring = digitsMap.get(substring.toLowerCase());
             }
-
-            sb.append(ss + " ");
+            stringBuilder.append(substring + " ");
         }
-        return sb.toString();
-        /*stringToChange = stringToChange.toLowerCase();
-        for(String key : digitsMap.keySet()){
-            stringToChange = stringToChange.replace(key, digitsMap.get(key));
-        }
-        return stringToChange;*/
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        return stringBuilder.toString();
     }
 
 }
