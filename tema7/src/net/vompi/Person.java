@@ -3,7 +3,8 @@ package net.vompi;
 import java.util.Objects;
 
 /**
- * Created by dani on 1/19/17.
+ * A class created just for testing purposes which implements the Comaparable inteface,
+ * which has a single member, the age, which is used for comparing means.
  */
 public class Person implements Comparable<Person> {
     private int age;

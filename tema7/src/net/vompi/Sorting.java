@@ -1,9 +1,18 @@
 package net.vompi;
 
 /**
- * Created by dani on 1/19/17.
+ * The Sorting class offers a lot of useful generic array-sorting methods
  */
 public class Sorting {
+
+    /**
+     * The quicksort method sorts a given array of objects in ascending order,
+     * according to every object's comparing rule, using the quicksort algorithm,
+     * as described on <a href>https://en.wikipedia.org/wiki/Quicksort</a>
+     *
+     * @param arrayToSort the array of objects to sort
+     * @param <T> any class which implements the Comparable interface on objects of same kind
+     */
 
     public <T extends Comparable<T>> void quicksort(T[] arrayToSort){
         if (arrayToSort == null) {
