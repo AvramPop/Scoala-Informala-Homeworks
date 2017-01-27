@@ -1,7 +1,7 @@
 package net.vompi;
 
 /**
- * Created by dani on 1/21/17.
+ * The Time class models a minutes-and-seconds stopwatch.
  */
 public final class Time implements Comparable<Time> {
     private int minutes;
@@ -32,11 +32,14 @@ public final class Time implements Comparable<Time> {
     }
 
     public void increaseSecondsWith(int seconds){
-        this.minutes += seconds % 60;
-        this.seconds += seconds - (seconds % 60);
-        if(seconds >= 60){
-            this.minutes += seconds % 60;
-            this.seconds += seconds - (seconds % 60);
+        this.minutes += seconds / 60;
+        this.seconds += seconds % 60;
+        if(this.seconds > 60){
+            this.minutes += this.seconds / 60;
+            this.seconds = this.seconds % 60;
+        } else if(this.seconds == 60){
+            this.minutes++;
+            this.seconds = 0;
         }
     }
 
@@ -44,9 +47,28 @@ public final class Time implements Comparable<Time> {
         return seconds;
     }
 
-    public void addTime(Time time) {
-        this.minutes += time.getSeconds() % 60;
-        this.seconds += time.getSeconds() - (time.getSeconds() % 60);
+    /**
+     * The addTime method adds a Time object to another one, that is, increases one's seconds
+     * with the anther one's, making the same with the minutes.
+     * @param time the time to add to the current object
+     */
+
+    public void addTime(Time time) throws IllegalArgumentException{
+        if(time == null){
+            throw new IllegalArgumentException();
+        }
+        else {
+            this.minutes += time.getMinutes();
+            this.minutes += time.getSeconds() / 60;
+            this.seconds += time.getSeconds() % 60;
+            if (this.seconds > 60) {
+                this.minutes += this.seconds / 60;
+                this.seconds = this.seconds % 60;
+            } else if (this.seconds == 60) {
+                this.minutes++;
+                this.seconds = 0;
+            }
+        }
     }
 
     @Override
@@ -67,5 +89,23 @@ public final class Time implements Comparable<Time> {
                 "minutes=" + minutes +
                 ", seconds=" + seconds +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Time time = (Time) o;
+
+        if (minutes != time.minutes) return false;
+        return seconds == time.seconds;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = minutes;
+        result = 31 * result + seconds;
+        return result;
     }
 }
