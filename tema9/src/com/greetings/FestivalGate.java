@@ -28,4 +28,9 @@ public class FestivalGate {
     public Map<TicketType, Integer> getTicketsBought() {
         return ticketsBought;
     }
+
+    public void clearData(){
+        ticketsQueue.clear();
+        ticketsBought.clear();
+    }
 }

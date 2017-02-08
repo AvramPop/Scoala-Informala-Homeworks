@@ -18,12 +18,15 @@ public class FestivalStatisticsThread extends Thread {
     public void run() {
         while(true) {
             try {
-                sleep(5005);
+                sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
             if(!gate.getTicketsBought().isEmpty()) {
                 printStatistics();
+            } else {
+                throw new IllegalArgumentException();
             }
         }
     }
