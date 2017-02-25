@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dani on 2/25/17.
+ * The DBAction class contains method to manipulate the db.
  */
 public class DBAction {
+    /**
+     * The addRoom adds a room, its 4-season fares and a mapping object to the db.
+     * @param room
+     * @param fares
+     */
     public void addRoom(Accomodation room, ArrayList<RoomFair> fares){
         AccomodationDAO accomodationDAO = new AccomodationDAO();
         RoomFairDAO roomFairDAO = new RoomFairDAO();
